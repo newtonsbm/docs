@@ -19,7 +19,7 @@ you've removed it and want to re-install it, you can do so by running the
 following from your application's ROOT directory (where composer.json file is
 located)::
 
-        php composer.phar require cakephp/migrations "@stable"
+        php composer.phar require cakephp/migration "@stable"
 
 You will need to add the following line to your application's bootstrap.php file::
 
@@ -69,7 +69,7 @@ to drop it if we rollback the migration.
 Once the file has been created in the **config/Migrations** folder, you will be
 able to execute the following command to create the table in your database::
 
-        bin/cake migrations migrate
+        bin/cake migration migrate
 
 Creating Migrations
 ===================
@@ -188,7 +188,7 @@ can be:
 Additionally you can create an empty migrations file if you want full control
 over what needs to be executed::
 
-        bin/cake migrations create MyCustomMigration
+        bin/cake migration create MyCustomMigration
 
 Please make sure you read the official `Phinx documentation <http://docs.phinx.org/en/latest/migrations.html>`_
 in order to know the complete list of methods you can use for writing migration files.
@@ -232,11 +232,11 @@ Applying Migrations
 Once you have generated or written your migration file, you need to execute the
 following command to apply the changes to your database::
 
-        bin/cake migrations migrate
+        bin/cake migration migrate
 
 To migrate to a specific version then use the --target parameter or -t for short::
 
-        bin/cake migrations migrate -t 20150103081132
+        bin/cake migration migrate -t 20150103081132
 
 That corresponds to the timestamp that is prefixed to the migrations file name.
 
@@ -248,11 +248,11 @@ plugin. It is the reverse action of the ``migrate`` command.
 
 You can rollback to the previous migration by using the ``rollback`` command::
 
-        bin/cake migrations rollback
+        bin/cake migration rollback
 
 You can also pass a migration version number to rollback to a specific version::
 
-         bin/cake migrations rollback -t 20150103081132
+         bin/cake migration rollback -t 20150103081132
 
 Migrations Status
 =================
@@ -260,7 +260,7 @@ Migrations Status
 The Status command prints a list of all migrations, along with their current status.
 You can use this command to determine which migrations have been run::
 
-        bin/cake migrations status
+        bin/cake migration status
 
 Marking a migration as migrated
 ===============================
@@ -271,7 +271,7 @@ It can sometimes be useful to mark a migration as migrated without actually runn
 In order to do this, you can use the ``mark_migrated`` command. This command
 expects the migration version number as argument::
 
-    bin/cake migrations mark_migrated 20150420082532
+    bin/cake migration mark_migrated 20150420082532
 
 Note that when you bake a snapshot with the ``cake bake migration_snapshot``
 command, the created migration will automatically be marked as migrated.
@@ -284,7 +284,7 @@ to be distributed much more portable and easy to install. All commands in the
 Migrations plugin support the ``--plugin`` or ``-p`` option that will scope the
 execution to the migrations relative to that plugin::
 
-        bin/cake migrations status -p PluginName
+        bin/cake migration status -p PluginName
 
-        bin/cake migrations migrate -p PluginName
+        bin/cake migration migrate -p PluginName
 
